@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Theme Made By www.w3schools.com - No Copyright -->
+  <!-- Used by Malcolm McCullum to build my website -->
+  <title>Simply Malcolm</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="favicon.ico">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <link href="http://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <style>
+    body {
+        font: 20px Montserrat, sans-serif;
+        line-height: 1.8;
+        color: #f5f6f7;
+    }
+    p {font-size: 16px;}
+    .margin {margin-bottom: 45px;}
+    .bg-1 {
+        background-color: #1abc9c; /*  1abc9c Dark Blue */
+        color: #ffffff;
+    }
+    .bg-2 { 
+        background-color: #474e5d; /* 474e5d Green */
+        color: #ffffff;
+    }
+    .bg-3 { 
+        background-color: #E8A16F; /* ffffff White */
+        color: #555555;
+    }
+    .bg-4 { 
+        background-color: #2f2f2f; /* Black Gray */
+        color: #fff;
+    }
+    .container-fluid {
+        padding-top: 70px;
+        padding-bottom: 70px;
+    }
+    .navbar {
+        padding-top: 15px;
+        padding-bottom: 15px;
+        border: 0;
+        border-radius: 0;
+        margin-bottom: 0;
+        font-size: 12px;
+        letter-spacing: 5px;
+        background-color: #2f2f2f;
+    }
+    .navbar-header a:hover{
+      color: #1abc9c !important;
+    }
+    .navbar-nav li a:hover{
+      color: #1abc9c !important;
+    }
+    .dropdown-menu{
+      background-color: #1abc9c;
+      color: white;
+      border: 1px solid black;
+    }
+    .dropdown-menu a:hover{
+      color: #1abc9c !important;
+    }
+    .dropdown:hover .dropdown-menu {
+        display: block;
+    }
+    .title-pic{
+        background-image: url("RefugeeBridge.jpg");
+        background-repeat: no-repeat;
+        background-position: top;
+        width: 100%
+        height: auto;
+        padding: 70px;
+    }
+    .scroll-top-wrapper {
+      position: fixed;
+      opacity: 0;
+      visibility: hidden;
+      overflow: hidden;
+      text-align: center;
+      z-index: 99999999;
+        background-color: #1abc9c;
+      color: #eeeeee;
+      width: 50px;
+      height: 48px;
+      line-height: 48px;
+      right: 30px;
+      bottom: 30px;
+      padding-top: 2px;
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+      border-bottom-right-radius: 10px;
+      border-bottom-left-radius: 10px;
+      -webkit-transition: all 0.5s ease-in-out;
+      -moz-transition: all 0.5s ease-in-out;
+      -ms-transition: all 0.5s ease-in-out;
+      -o-transition: all 0.5s ease-in-out;
+      transition: all 0.5s ease-in-out;
+    }
+    .scroll-top-wrapper:hover {
+      background-color: #888888;
+    }
+    .scroll-top-wrapper.show {
+        visibility:visible;
+        cursor:pointer;
+      opacity: 1.0;
+    }
+    .scroll-top-wrapper i.fa {
+      line-height: inherit;
+    }
+ 
+  </style>
+</head>
+<body>
+<!--side Navbar -->
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href="http://malcolmmccullum.com">Home</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav navbar-right">
+          <li><a href="bio.html">BIO</a></li>
+          <li><a href="travel.html">TRAVEL</a></li>
+          <li><a href="exp.html">EXPERIENCE</a></li>
+          <li><a href="ResumeWithReferences.pdf">RESUME</a></li>
+          <li><a href="contact.html">CONTACT</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<!-- Second Container -->
+<div class="container-fluid bg-1 text-center" style="padding-top: 100px;">
+
+  <h3 class="margin">Welcome!</h3>
+  <p>Thank you for visiting my page! Feel free to brouse around to explore and find out more about me.</p>
+</div>
+<!-- First Container -->
+<!-- A class has all the information, css style in it -->
+<a name="who"></a>
+<div class="container-fluid bg-2 text-center">
+  <h3>Who am I?</h3>
+  <h4 class="margin"><p>"Never be afraid to raise your voice for honesty and truth and compassion against injustice and lying and greed.</p>
+  	<p>If all the people all over the world would do this....it would change the world."</p></h4>
+  <img src="CarSelfie.jpg" class="img-responsive img-circle margin" style="display:inline" alt="myself" width="300" height="300">
+  <h4>-- William Faulkner--</h4>
+</div>
+
+<a name="contact"></a>
+
+</div>
+<!-- Source: http://www.webtipblog.com/adding-scroll-top-button-website/ -->
+<!-- Back to the top icon -->
+<div class="scroll-top-wrapper">
+  <span class="scroll-top-content">
+    <i class="glyphicon glyphicon-arrow-up"></i>
+  </span>
+</div>
+<!-- Scroll to the top functions -->
+<script>
+ 
+$(function(){
+ 
+  $(document).on( 'scroll', function(){
+ 
+    if ($(window).scrollTop() > 100) {
+      $('.scroll-top-wrapper').addClass('show');
+    } else {
+      $('.scroll-top-wrapper').removeClass('show');
+    }
+  });
+  $('.scroll-top-wrapper').on('click', scrollToTop);
+});
+
+function scrollToTop() {
+  verticalOffset = typeof(verticalOffset) != 'undefined' ? verticalOffset : 0;
+  element = $('body');
+  offset = element.offset();
+  offsetTop = offset.top;
+  $('html, body').animate({scrollTop: offsetTop}, 500, 'linear');
+}
+</script>
+<!-- Footer -->
+<footer class="container-fluid bg-4 text-center">
+	<table style="width: 100%">
+		<tr>
+			<td>Created by:  Malcolm McCullum</td>
+      <td>A little help from <a href="http://getbootstrap.com/">Bootstrap</a></td>
+      </tr>
+	</table>
+</footer>
+</body>
+</html>
