@@ -1,13 +1,11 @@
-
 <?php
   if (isset($_POST["submit"])) {
     $name = $_POST['name'];
     $email = $_POST['email'];
+    $subject = $_POST['subject'];
     $message = $_POST['message'];
-    $human = intval($_POST['human']);
     $from = 'Contact Form'; 
-    $to = 'malcolm@malcolmmccullum.com'; 
-    $subject = 'SimplyMalcolm message';
+    $to = 'mmccullum1991@gmail.com'; 
     
     $body ="From: $name\n E-Mail: $email\n Message:\n $message";
     // Check if name has been entered
@@ -19,27 +17,27 @@
     if (!$_POST['email'] || !filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
       $errEmail = 'Please enter a valid email address';
     }
-    
+    if(!$_POST['subject']){
+      $errSubject = 'Please enter a subject';
+    }
     //Check if message has been entered
     if (!$_POST['message']) {
       $errMessage = 'Please enter your message';
     }
-    //Check if simple anti-bot test is correct
-    if ($human !== 4) {
-      $errHuman = 'Your anti-spam is incorrect';
-    }
 // If there are no errors, send the email
-if (!$errName && !$errEmail && !$errMessage && !$errHuman) {
+if (!$errName && !$errEmail && !$errSubject && !$errMessage ) {
   if (mail ($to, $subject, $body, $from)) {
     $result='<div class="alert alert-success">Thank You! I will be in touch</div>';
-   /* $autoMessage="Thank you for contacting me. Please exuse the www-data in the name.\nI have  received your email and will be in contact soon. Feel free to reply back to this email if you have any other questions or concerns.\n\nThank you,\n\nMalcolm McCulllum";
-    mail($email,"Let's stay in touch", $autoMessage,  "From: $to");*/
+  
   } else {
     $result='<div class="alert alert-danger">Sorry there was an error sending your message. Please try again later.<br>In the meantime directly email me: mmccullum1991@gmail.com</div>';
   }
 }
   }
 ?>
+
+
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -54,6 +52,7 @@ if (!$errName && !$errEmail && !$errMessage && !$errHuman) {
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
   <link href="http://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+  <script src="http://www.w3schools.com/lib/w3data.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
   <script>
@@ -67,138 +66,22 @@ if (!$errName && !$errEmail && !$errMessage && !$errHuman) {
       map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
     }
     google.maps.event.addDomListener(window, 'load', initialize);
-  </script>
-  <style>
-    body {
-        font: 20px Montserrat, sans-serif;
-        line-height: 1.8;
-        color: #f5f6f7;
-    }
-    #bio {padding-top:50px;height:500px;color: #fff; background-color: #1E88E5;}
-    #travel {padding-top:50px;height:500px;color: #fff; background-color: #673ab7;}
-    #experience {padding-top:50px;height:500px;color: #fff; background-color: #ff9800;}
-    #contact {padding-top:50px;height:500px;color: #fff; background-color: #00bcd4;}
-    #gmap_canvas {
-      background-color: #1abc9c;
-      color: #000000
-      margin: auto;
-      height: 440px;
-      max-width: 770px;
-      margin: 10px auto;
-    }
-    p {font-size: 16px;}
-    .margin {margin-bottom: 45px;}
-    .center {
-      display: block;
-      margin-left: auto;
-      margin-right: auto;
-    }
-    .bg-1 {
-        background-color: #1abc9c; /*  1abc9c Dark Blue */
-        color: #ffffff;
-    }
-    .bg-2 { 
-        background-color: #929AA9; /* 474e5d Green */
-        color: #ffffff;
-    }
-    .bg-3 { 
-        background-color: #474e5d; /* ffffff White */
-        color: #ffffff;
-    }
-    .bg-4 { 
-        background-color: #2f2f2f; /* Black Gray */
-        color: #fff;
-    }
-    .bg-5{
-        background-color: #709399; /* greyish */
-        color: #ffffff;
-    }
-    .bg-6{
-        background-color: #EFD309; /* easter pink */
-        color: #2f2f2f;
-    }
-    .bg-7{
-        background-color: #5FFF7E; /* easter green */
-        color: #ffffff;
-    }
-    .container-fluid {
-        padding-top: 70px;
-        padding-bottom: 70px;
-    }
-    .fa-facebook {
-      color:#3b5998;
 
-    } 
-    a:hover{
-      color: #EFD62D;
-    }
-    .navbar {
-        padding-top: 15px;
-        padding-bottom: 15px;
-        border: 0;
-        border-radius: 0;
-        margin-bottom: 0;
-        font-size: 12px;
-        letter-spacing: 5px;
-        background-color: #2f2f2f;
-    }
-    .navbar-header a:hover{
-      color: #1abc9c !important;
-    }
-    .navbar-nav li a:hover{
-      color: #1abc9c !important;
-    }
-    .dropdown-menu{
-      background-color: #1abc9c;
-      color: white;
-      border: 1px solid black;
-    }
-    .dropdown-menu a:hover{
-      color: #1abc9c !important;
-    }
-    .dropdown:hover .dropdown-menu {
-        display: block;
-    }
-    .scroll-top-wrapper {
-      position: fixed;
-      opacity: 0;
-      visibility: hidden;
-      overflow: hidden;
-      text-align: center;
-      z-index: 99999999;
-        background-color: #1abc9c;
-      color: #eeeeee;
-      width: 50px;
-      height: 48px;
-      line-height: 48px;
-      right: 30px;
-      bottom: 30px;
-      padding-top: 2px;
-      border-top-left-radius: 10px;
-      border-top-right-radius: 10px;
-      border-bottom-right-radius: 10px;
-      border-bottom-left-radius: 10px;
-      -webkit-transition: all 0.5s ease-in-out;
-      -moz-transition: all 0.5s ease-in-out;
-      -ms-transition: all 0.5s ease-in-out;
-      -o-transition: all 0.5s ease-in-out;
-      transition: all 0.5s ease-in-out;
-    }
-    .scroll-top-wrapper:hover {
-      background-color: #888888;
-    }
-    .scroll-top-wrapper.show {
-        visibility:visible;
-        cursor:pointer;
-      opacity: 1.0;
-    }
-    .scroll-top-wrapper i.fa {
-      line-height: inherit;
-    }
- 
-  </style>
+    
+  </script>
+
+
+
+  <!-- lINK TO css stylesheet -->
+  <link rel="stylesheet" type="text/css" href="mystylesheet.css">
+
+
 </head>
+
+
+
 <body data-spy="scroll" data-target=".navbar" data-offset="50">
+
 <!--side Navbar -->
 <nav class="navbar navbar-inverse navbar-fixed-top">
   <div class="container">
@@ -213,14 +96,18 @@ if (!$errName && !$errEmail && !$errMessage && !$errHuman) {
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
           <li><a href="#bio">BIO</a></li>
-          <li><a href="#travel">TRAVEL</a></li>
           <li><a href="#experience">EXPERIENCE</a></li>
           <li><a href="#resume">RESUME</a></li>
+          <li><a href="#travel">TRAVEL</a></li>
           <li><a href="#contact">CONTACT</a></li>
       </ul>
     </div>
   </div>
 </nav>
+
+
+
+
 <!-- First Container -->
 <div class="container-fluid bg-3 text-center" style="padding-top:150px; ">
   <h1 style="color: #1abc9c">Malcolm Kyle McCullum</h1>
@@ -233,7 +120,7 @@ if (!$errName && !$errEmail && !$errMessage && !$errHuman) {
   <div class="col-sm-4">
     <h2 style="color: #1abc9c;">Who am I?</h2>
     <h4 class="margin"><p>"Never be afraid to raise your voice for honesty and truth and compassion against injustice and lying and greed.</p>
-    	<p>If all the people all over the world would do this....it would change the world."</p></h4>
+      <p>If all the people all over the world would do this....it would change the world."</p></h4>
     <h4>By: William Faulkner</h4><br>
      <p>I am currently a senior at Mississippi State University studying Computer Science graduating in December 2016. If anyone were to describe me they would definitely say I am a unique individual. I think outside of the box, love to be adventerous, and enjoy what I do and who I am. Well what exactly is that you may say? Keep looking and surely you will find out.</p>
   </div>
@@ -243,6 +130,8 @@ if (!$errName && !$errEmail && !$errMessage && !$errHuman) {
   </div>
 </div>
 </div>
+
+
 
 <!-- Bio section -->
 <a name="bio"></a>
@@ -256,23 +145,24 @@ if (!$errName && !$errEmail && !$errMessage && !$errHuman) {
   <p>For those of you that do not know where that is then there is a map just below.</p>
   
 </div>
+
+
+
+
   <!-- Div to contain the map of Petal -->
   <div class="container-fluid bg-3 text-center" style="color: #000000;">
   <script src='https://maps.googleapis.com/maps/api/js?v=3.exp'></script><div style='overflow:hidden;height:440px;widt: 600px;'><div id='gmap_canvas'> </div><div ><small><a href="http://embedgooglemaps.com" style="color: #000000;">                 embed google maps             </a></small></div><div><small><a href="http://www.autohuren.world/">autohuren</a></small></div><style>#gmap_canvas img{max-width:none!important;background:none!important}</style></div><script type='text/javascript'>function init_map(){var myOptions = {zoom:12,center:new google.maps.LatLng(31.3465627,-89.26006050000001),mapTypeId: google.maps.MapTypeId.HYBRID};map = new google.maps.Map(document.getElementById('gmap_canvas'), myOptions);marker = new google.maps.Marker({map: map,position: new google.maps.LatLng(31.3465627,-89.26006050000001)});infowindow = new google.maps.InfoWindow({content:'<strong color=#000000>My hometown</strong><br color=#000000>Petal, MS<br>'});google.maps.event.addListener(marker, 'click', function(){infowindow.open(map,marker);});infowindow.open(map,marker);}google.maps.event.addDomListener(window, 'load', init_map);</script>
 </div>
-<div class="container-fluid bg-3 text-center">
-<div class="col-sm-1"></div>
-  <div class="col-sm-1"></div>
-  <div class="col-sm-8">
-  <p>I would have to say that my childhood was a fairly normal one. I was either in school, playing in the woods with my cousins, riding our four-wheelers around, or just enjoying time with my family.<br>Some of my happiest moments are all of us packing up and driving down to the beach or having getting ready for birthdays or holidays.<br>
-  Those were always very speical around our house. I guess that is how I adopted the philosophy of no matter what is going on, stop and enjoy the good time we have becasue we never know what is coming next.</p>
-  </div>
-  </div>
-</div>
-<div class="container-fluid text-center bg-2 " style="color: yellow;" >
-  <p class="italic">"Nothing can stop the man with the right mental attitude from achieving his goal;<br> nothing on earth can help the man with the wrong mental attitude."</p>
---Thomas Jefferson
-</div>
+
+
+<!-- my past html file -->
+<div w3-include-html="myPast.html"></div>
+
+
+
+
+
+
 <!-- Experience section -->
 <a name="experience"></a>
 <div class="container-fluid bg-3 text-center" style="padding-top: 100px;">
@@ -289,8 +179,8 @@ if (!$errName && !$errEmail && !$errMessage && !$errHuman) {
 <a name="resume"></a>
 <div class="container-fluid bg-3 text-center" style="padding-top: 100px;">
   <h2 class="margin" style="color: #1abc9c;">Resume</h2>
-  <a href="#contact"
-    class="btn btn-default btn-large">Download my resume</a><br>
+  <a href="#contact" onclick="showResumeFunction()" 
+    class="btn btn-default btn-large" id="ResumeButton">Download my resume</a><br>
 </div>
 
 <div class="container-fluid bg-3">
@@ -321,7 +211,7 @@ if (!$errName && !$errEmail && !$errMessage && !$errHuman) {
         <p>Academic Competiveness Grant Recipient – Mississippi State University</p>
         <p>IEEE member-local MSU Electrical and Computer Engineering Chapter</p>
         <p>Spanish/Math tutor and Engineering Entrepreneur competition – Mississippi State University</p>
-        <p>CPR, First-Aid, and AED Certified</p>
+        <p>CPR, First-Aid, and AED Instructor Certified</p>
       </h4>      
     </div>
     </div>
@@ -382,88 +272,7 @@ if (!$errName && !$errEmail && !$errMessage && !$errHuman) {
     </div>
   </div>
 
-    
 
-
-<!--Carousel Source: http://www.w3schools.com/bootstrap/bootstrap_carousel.asp -->
-<!--
-<div class="container-fluid bg-3 text-center" >
-  <div id="myCarousel" class="carousel slide" data-ride="carousel">
-  <ol class="carousel-indicators">
-    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-    <li data-target="#myCarousel" data-slide-to="1"></li>
-    <li data-target="#myCarousel" data-slide-to="2"></li>
-    <li data-target="#myCarousel" data-slide-to="3"></li>
-    <li data-target="#myCarousel" data-slide-to="4"></li>
-    <li data-target="#myCarousel" data-slide-to="5"></li>
-  </ol>
--->
-  <!-- Wrapper for slides --> 
-  <!--
-  <div class="carousel-inner" role="listbox">
-    <div class="item active">
-      <img src="petalHigh.jpg" alt="Petal High">
-      <div class="carousel-caption">
-        <h3>Petal High School</h3>
-        <p>The high school I went to a long, long time ago.</p>
-      </div>
-    </div>
-    <div class="item">
-      <img src="swimming.jpg" alt="swimming">
-      <div class="carousel-caption">
-        <h3>Swim Team</h3>
-        <p>I always loved swimming, and ended up becoming top 25 in the state.</p>
-      </div>
-    </div>
-    <div class="item">
-      <img src="boyScouts.jpg" alt="Boy Scouts">
-      <div class="carousel-caption">
-        <h3>Boy Scouts of America</h3>
-        <p>Growing up I mainly played outside instead of staring at the t.v. screen.</p>
-        <p>Naturally, I gravitate to the outdoors, and loved being apart of the BSOA.</p>
-      </div>
-    </div>
-    <div class="item">
-      <img src="MeAndMom.jpg" alt="Mom and I">
-      <div class="carousel-caption">
-        <h3>My Mother</h3>
-        <p>My mom was always a very influential part of my life and made me the man I am today.</p>
-      </div>
-    </div>
-    <div class="item">
-      <img src="FIRST.jpg" alt="Robotics">
-      <div class="carousel-caption">
-        <h3>FIRST</h3>
-        <p>In high school I joined the FIRST Robotics Club.<br>
-            It was definitely where I learned how awesome being a nerd was, and how much fun you can have with like-minded people.</p>
-      </div>
-    </div>
-    <div class="item">
-      <img src="ava.jpg" alt="Ava Danielle"> 
-      <div class="carousel-caption">
-        <h3>Ava Danielle</h3>
-        <p>My niece! She constantly brings light to my day, and reminds me to stay cheerful.</p>
-      </div>
-    </div>
-  </div>
--->
-  <!-- Left controls -->
-<!--  
-  <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
-  </a>
-  -->
-  <!-- Right controls -->
-  <!--
-  <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>
-  </a>
-</div>
-</div>
--->
-<!-- End bio section -->
 
 <!-- Begin Travel Section -->
 <a name="travel"></a>
@@ -500,7 +309,7 @@ if (!$errName && !$errEmail && !$errMessage && !$errHuman) {
     </div>
 </div>
 
-	<a name="contact"></a>
+  <a name="contact"></a>
   <div class="container-fluid bg-3  text-center" style="padding-top: 100px;" >
   <h1 class="margin" style="color: #1abc9c;">Let's stay in contact</h1>
 
@@ -514,10 +323,13 @@ if (!$errName && !$errEmail && !$errMessage && !$errHuman) {
 </a></td>
     </tr>
   </table>
+ 
   </div>
-<!-- Contact me form! -->
-  <div class="container-fluid text-center bg-3" style="margin: 0 auto;" align="center">
   
+<!-- Contact me form! -->
+
+<div class="container-fluid text-center bg-3" style="margin: 0 auto;" align="center">
+   <p id="showResume" style="color: #EFD62D;"></p>
 <form class="form-horizontal" role="form" method="post" action="index.php">
   <div class="form-group">
     <label for="name" class="col-sm-2 col-sm-offset-1 control-label" style="color: #1abc9c;">Name</label>
@@ -534,6 +346,13 @@ if (!$errName && !$errEmail && !$errMessage && !$errHuman) {
     </div>
   </div>
   <div class="form-group">
+    <label for="subject" class="col-sm-2 col-sm-offset-1 control-label" style="color: #1abc9c;">Subject</label>
+    <div class="col-sm-5">
+      <input type="subject" class="form-control" id="subject" name="subject" placeholder="Subject: " value="" >
+      <?php echo "<p style='color:yellow'>$errSubject</p>";?>
+    </div>
+  </div>
+  <div class="form-group">
     <label for="message" class="col-sm-2 col-sm-offset-1 control-label" style="color: #1abc9c;">Message</label>
     <div class="col-sm-8">
       <textarea class="form-control" rows="4" name="message" placeholder="I gladly take any kind of advice or criticism anytime. "></textarea>
@@ -541,17 +360,11 @@ if (!$errName && !$errEmail && !$errMessage && !$errHuman) {
     </div>
   </div>
   <div class="form-group">
-    <label for="human" class="col-sm-2 col-sm-offset-1 control-label" style="color: #1abc9c;">1 + 3 = ?</label>
-    <div class="col-sm-5 ">
-      <input type="text" class="form-control" id="human" name="human" placeholder="Forgive the human test..." >
-      <?php echo "<p style='color:yellow'>$errHuman</p>";?>
-    </div>
-  </div>
-  <div class="form-group">
     <div class="col-sm-10 col-sm-offset-1">
       <input id="submit" name="submit" type="submit" value="Send" class="btn btn-primary">
     </div>
   </div>
+  <input  type="hidden" name="jumpResult" />
   <div class="form-group">
     <div class="col-sm-10 col-sm-offset-2">
        <?php echo $result ?>
@@ -570,8 +383,11 @@ if (!$errName && !$errEmail && !$errMessage && !$errHuman) {
 
 <!-- Scroll to the top functions -->
 <script>
- 
-$(function(){
+function showResumeFunction(){
+  document.getElementById("showResume").innerHTML="Please email me that you would like to receive my resume. Thank you!";
+}
+
+$(document).ready(function(){
  
   $(document).on( 'scroll', function(){
  
@@ -588,18 +404,20 @@ function scrollToTop() {
   verticalOffset = typeof(verticalOffset) != 'undefined' ? verticalOffset : 0;
   element = $('body');
   offset = element.offset();
+
   offsetTop = offset.top;
   $('html, body').animate({scrollTop: offsetTop}, 500, 'linear');
 }
 </script>
 <!-- Footer -->
 <footer class="container-fluid bg-4 text-center">
-	<table style="width: 100%">
-		<tr>
-			<td>Created by: Malcolm Kyle McCullum</td>
+  <table style="width: 100%">
+    <tr>
+      <td>Created by: Malcolm Kyle McCullum</td>
       <td>With a little help from <a href="http://getbootstrap.com/">Bootstrap</a></td>
       </tr>
-	</table>
+  </table>
 </footer>
+<script>w3IncludeHTML();</script>
 </body>
 </html>
